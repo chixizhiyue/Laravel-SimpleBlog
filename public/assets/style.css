@@ -1,0 +1,97 @@
+body{
+	background:#f1f1f1;
+	padding: 0 7%;
+}
+h1{
+	margin-top: 0px;
+}
+#main{
+	background: #fff;
+	box-shadow: 2px 2px 5px rgba(204, 204, 204, 0.39);
+	padding: 2% 5%;
+	margin-bottom: 20px;
+}
+article[class=index]{
+	border-bottom: 1px solid #f1f1f1;
+	margin-top: 10px;
+}
+article[class=index]:last-child{
+	border-bottom: 0px;
+}
+article a p{
+	font-size: 2.2rem;
+}
+article a:hover{
+	text-decoration: none;
+}
+article p{
+	font-size: 1.7rem;
+	line-height:2;
+}
+.btn{
+	margin-top: 20px;
+}
+.btn-delete:hover{
+	background: rgb(226, 73, 69);
+	color: #fff;
+}
+.post-warning{
+	margin-top: 20px;
+}
+.userbar{
+	display: block;
+	background:rgba(217, 237, 247, 0.3);
+	padding: 0px 12px;
+	height: 40px;
+	line-height: 40px;
+	margin:30px auto;
+	color: #337ab7;
+}
+.userbar span{
+	font-size: 12px;
+	float: right;
+}
+.userbar span a{
+	margin:0 5px;
+}
+.login-panel{
+	margin-top:7%;
+}
+.edit-btn{
+	float: right;
+	display: block;
+	font-size: 14px;
+	line-height: 40px;
+}
+.edit-btn a{
+	padding: 5px 7px;
+}
+.edit-btn a:hover{
+	text-decoration: none;
+	background: #f1f1f1;
+}
+.edit-btn button{
+	display: inline;
+}
+label{
+	margin: 10px 0 5px 0;
+}
+.pagination>li>a, .pagination>li>span{
+	border:0px;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+	background:rgba(217, 237, 247, 0.52);
+	color: #337ab7;
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover{
+	background:rgba(217, 237, 247, 0.52);
+	color: #337ab7;
+}
+@media (max-width: 780px){
+	body{
+		padding: 0;
+	}
+	.login-panel{
+		margin-top:0;
+	}
+}
