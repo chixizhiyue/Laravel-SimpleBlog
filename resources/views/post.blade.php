@@ -30,7 +30,7 @@
 				<br>
 				<small>Tags:</small> {{$article->tags}}
 				<br>
-				<small>Date:</small> {{\Carbon\Carbon::parse($article->created_at)->toDateString()}}
+				{{\App\User::findOrFail($article->user_id)->name}} <small>posted on</small> {{\Carbon\Carbon::parse($article->created_at)->toDateString()}}
 
 		</article>
 
