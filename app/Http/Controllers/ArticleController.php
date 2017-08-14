@@ -85,7 +85,7 @@ class ArticleController extends Controller
 
     public function mine($id)
     {
-        $article = \App\User::findOrFail($id)->article;
+        $article = \App\User::findOrFail($id)->article()->orderBy('created_at', 'desc')->get();
         //dd($article);
         return view('my',compact('article'));
     }
@@ -110,6 +110,10 @@ class ArticleController extends Controller
     {
         if(Auth::user()):
             $cat = Category::findOrfail($id);
+            if($cat->article)
+            {
+                dd("管理员设置禁止删除");
+            }
             $cat->delete();
             //dd($input);
             return redirect('/category');
@@ -135,7 +139,7 @@ class ArticleController extends Controller
     }
     public function cat_list($id)
     {
-        $article = Category::findOrFail($id)->article()->Paginate(7);
+        $article = Category::findOrFail($id)->article()->orderBy('created_at', 'desc')->Paginate(7);
         $title = Category::findOrFail($id)->value;
         //dd($article);
         return view('index',compact('article'))->with("title",$title);

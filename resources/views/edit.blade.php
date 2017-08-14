@@ -68,13 +68,12 @@ Edit Post
 				</div>
 			</div>
 		@endif
+		include('footer')
 	@else
 	<div class="panel panel-default col-md-4 col-md-offset-4" style="margin:7% auto;float:none">
 		<div class="panel-body">
 		  Please click <a href="/auth/login">here</a> to login
 		</div>
 	</div>
-		
 	@endif
 	</div>
-@include('footer')

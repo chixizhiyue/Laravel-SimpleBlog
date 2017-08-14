@@ -4,7 +4,7 @@ My Post
 @include('header')
 
 	<div id="main">
-		<h1>Just a Blog.</h1>
+		<h1><a class="site-title" href="/">Just a Blog.</a></h1>
 		@include('nav')
 
 		<table class="table table-striped">
@@ -12,6 +12,7 @@ My Post
 			<tr>
 				<th>Title</th>
 				<th>Date</th>
+				<th>Category</th>
 				<th>Manage</th>
 			</tr>
 			</thead>
@@ -20,6 +21,7 @@ My Post
 				<tr>
 					<td><a href="/post/{{$post->id}}">{{$post->title}}</a></td>
 					<td>{{\Carbon\Carbon::parse($post->created_at)->toDateString()}}</td>
+					<td>{{\App\Category::findOrFail($post->cat)->value}}</td>
 					<td>
 						{!!  Form::model($article,['url'=>'/post/'.$post->id,'method'=>'DELETE']) !!}
 						<a class="btn btn-default mt0 btn-sm" href="/post/{{$post->id}}/edit">Edit</a>
