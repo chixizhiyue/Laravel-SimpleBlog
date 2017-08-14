@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Query\Builder;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use DB;
+use Illuminate\Support\Facades\Auth;
 use Parsedown;
 
 require_once __DIR__ . '/../../Parsedown.php';
@@ -38,7 +39,8 @@ class ArticleController extends Controller
 
     public function create()
     {
-        return view('create');
+        $category = Category::all();
+        return view('create')->with("category",$category);
     }
 
    public function store(Requests\CreatePost $request)
@@ -54,7 +56,8 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $article = Article::findOrFail($id);
-        return view('edit',compact('article'));
+        $category = Category::all();
+        return view('edit',compact('article'))->with("category",$category);
     }
 
    public function update(Requests\CreatePost $request,$id)
@@ -84,5 +87,52 @@ class ArticleController extends Controller
         //dd($article);
         return view('my',compact('article'));
     }
+    public function cat_index()
+    {
+        if(Auth::user()):
+        $category = Category::all();
+        return view('category',compact('category'));
+        endif;
+        return redirect('/');
+    }
+    public function cat_store(Request $request)
+    {
+        if(Auth::user()):
+            $input = $request->all();
+            Category::create($input);
+            //dd($input);
+            return redirect('/category');
+        endif;
+    }
+    public function cat_delete($id)
+    {
+        if(Auth::user()):
+            $cat = Category::findOrfail($id);
+            $cat->delete();
+            //dd($input);
+            return redirect('/category');
+        endif;
+    }
+    public function cat_edit($id)
+    {
+        if(Auth::user()):
+            $cat = Category::findOrfail($id);
+            $category = Category::all();
+            return view('cat_edit',compact('category'))->with("cat_do",$cat);
+        endif;
+    }
+    public function cat_update(Request $request,$id)
+    {
+        if(Auth::user()):
+            $cat = Category::findOrfail($id);
+            $input = $request->all();
+            //dd($input);
+            $cat->update($input);
+            return redirect('/category');
+        endif;
+    }
+
+
+
 
 }

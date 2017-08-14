@@ -5,17 +5,7 @@ My Post
 
 	<div id="main">
 		<h1>Just a Blog.</h1>
-		@if(Auth::user())
-		<p class="userbar">
-			Welcome, <b>{{Auth::user()->name}}</b>.
-			<span><a href="/post/create">New Post</a>/<a href="/post/my/{{Auth::user()->id}}">My Post</a>/<a href="/auth/logout">Logout</a></span>
-		</p>		
-		@else
-		<p class="userbar">
-			Welcome to laravel word.
-			<span><a href="/auth/login">Login</a>/<a href="/auth/register">Register</a></span>
-		</p>
-		@endif
+		@include('nav')
 
 		<table class="table table-striped">
 			<thead>
@@ -28,12 +18,12 @@ My Post
 			<tbody>
 			@foreach($article as $post)
 				<tr>
-					<td><a href="/post/{{$post->id}}"><p>{{$post->title}}</p></a></td>
+					<td><a href="/post/{{$post->id}}">{{$post->title}}</a></td>
 					<td>{{\Carbon\Carbon::parse($post->created_at)->toDateString()}}</td>
 					<td>
-						<span class="edit-btn"><a href="/post/{{$article->id}}/edit">Edit</a></span>
-						{!!  Form::model($article,['url'=>'/post/'.$article->id,'method'=>'DELETE']) !!}
-						{!! Form::submit('Delete',["class"=>"btn btn-default btn-delete pull-right"]) !!}
+						{!!  Form::model($article,['url'=>'/post/'.$post->id,'method'=>'DELETE']) !!}
+						<a class="btn btn-default mt0 btn-sm" href="/post/{{$post->id}}/edit">Edit</a>
+						{!! Form::submit('Delete',["class"=>"btn btn-default btn-delete mt0 btn-sm"]) !!}
 						{!!  Form::close() !!}
 					</td>
 				</tr>

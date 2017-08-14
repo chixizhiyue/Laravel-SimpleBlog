@@ -11,7 +11,32 @@ Edit Post
 					{!! Form::label('title') !!}
 					{!! Form::text('title',$article->title,["class"=>"form-control"]) !!}
 					{!! Form::label('content') !!}
-					{!! Form::textarea('post',$article->post,["class"=>"form-control"]) !!}
+					{!! Form::textarea('post',$article->post,["class"=>"form-control","rows"=>"20"]) !!}
+
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Extra Setings
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    {!! Form::label('description') !!}
+                                    {!! Form::text('description',$article->description,["class"=>"form-control"]) !!}
+                                    {!! Form::label('tags') !!}
+                                    {!! Form::text('tags',$article->tags,["class"=>"form-control"]) !!}
+                                    {!! Form::label('index picture') !!}
+                                    {!! Form::text('img',$article->img,["class"=>"form-control"]) !!}
+                                    {!! Form::label('created at') !!}
+                                    {!! Form::input('date','created_at',\Carbon\Carbon::parse($article->created_at)->toDateString(),["class"=>"form-control"]) !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 					{!! Form::hidden('edit_user',Auth::user()->id) !!}
 					{!! Form::submit('Edit',["class"=>"btn btn-default pull-left"]) !!}
 				{!!  Form::close() !!}

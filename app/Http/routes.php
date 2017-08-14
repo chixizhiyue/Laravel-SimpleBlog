@@ -15,6 +15,11 @@ get('/', 'ArticleController@index');
 resource('/post', 'ArticleController');
 get('/post', 'ArticleController@redirect');
 get('/post/my/{id}', 'ArticleController@mine');
+get('/category', 'ArticleController@cat_index');
+post('/category','ArticleController@cat_store');
+delete('/category/{id}','ArticleController@cat_delete');
+get('/category/{id}/edit','ArticleController@cat_edit');
+patch('/category/{id}','ArticleController@cat_update');
 
 get('auth/login','Auth\AuthController@getLogin');
 post('auth/login','Auth\AuthController@postLogin');
