@@ -24,4 +24,3 @@ Register
 		</div>
 		@endif
 	</div>
-@include('footer')

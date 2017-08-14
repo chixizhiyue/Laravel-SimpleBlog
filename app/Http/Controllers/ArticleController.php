@@ -20,7 +20,7 @@ class ArticleController extends Controller
 
     public function index()
     {
-    	$article = Article::latest()->Paginate(3);
+    	$article = Article::latest()->Paginate(7);
         //$article = DB::table('articles');
         //sdd($article);
         return view('index',compact('article'));
@@ -132,6 +132,14 @@ class ArticleController extends Controller
             $cat->update($input);
             return redirect('/category');
         endif;
+    }
+    public function cat_list($id)
+    {
+        $article = Category::findOrFail($id)->article()->Paginate(7);
+        $title = Category::findOrFail($id)->value;
+        //dd($article);
+        return view('index',compact('article'))->with("title",$title);
+        return redirect('/');
     }
 
 

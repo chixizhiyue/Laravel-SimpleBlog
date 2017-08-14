@@ -98,6 +98,34 @@ label{
 	margin-top:20px;
 }
 
+.index-img{
+	width:100%;
+	margin-bottom: 10px;
+}
+
+.site-title{
+	color: #333;
+	transition:500ms;
+}
+
+.site-title:hover{
+	color: #333;
+	text-decoration: none;
+	letter-spacing:3px;
+}
+
+footer{
+	padding: 2% 5%;
+	background: #fff;
+	color: #aaaaaa;
+}
+footer a{
+	color: #aaa;
+}
+footer a:hover{
+	color: #aaa;
+}
+
 @media (max-width: 780px){
 	body{
 		padding: 0;

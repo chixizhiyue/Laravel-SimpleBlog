@@ -14,7 +14,7 @@ Edit Post
                 }
                 //dd($cat_list);
                 ?>
-				<hr>
+                @include('nav')
 				{!!  Form::model($article,['url'=>'/post/'.$article->id,'method'=>'PATCH']) !!}
 					{!! Form::label('title') !!}
 					{!! Form::text('title',$article->title,["class"=>"form-control"]) !!}

@@ -13,7 +13,7 @@ Create Post
             }
             //dd($cat_list);
             ?>
-			<hr>
+            @include('nav')
 			{!!  Form::open(['url'=>'/post']) !!}
 				{!! Form::label('title') !!}
 				{!! Form::text('title',null,["class"=>"form-control"]) !!}

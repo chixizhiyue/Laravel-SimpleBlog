@@ -20,4 +20,3 @@ Login
 		</div>
 		@endif
 	</div>
-@include('footer')
