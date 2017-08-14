@@ -45,7 +45,8 @@ class ArticleController extends Controller
 
    public function store(Requests\CreatePost $request)
     {
-        $input = $request->all(); 
+        $input = $request->all();
+        $input["cat"] = Category::whereRaw("slug='".$input["cat"]."'")->first()->id;
         $action = array_merge(['user_id'=>\Auth::user()->id],$input);
         //dd($action);
         Article::create($action);
@@ -64,6 +65,7 @@ class ArticleController extends Controller
     {
         $input = $request->all(); 
         //Article::update($input);
+        $input["cat"] = Category::whereRaw("slug='".$input["cat"]."'")->first()->id;
         $article = Article::findOrFail($id);
         //dd($input);
         if($article->user_id==$request->edit_user)

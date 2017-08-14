@@ -6,10 +6,20 @@ Edit Post
 		@if(Auth::user()->id==$article->user_id)
 			<div id="main">
 				<h1>Edit Post</h1>
+                <?php
+                $cat_list = [];
+                foreach ($category as $category_value)
+                {
+                    $cat_list = array_merge($cat_list,[ "$category_value->slug"=>$category_value->value]);
+                }
+                //dd($cat_list);
+                ?>
 				<hr>
 				{!!  Form::model($article,['url'=>'/post/'.$article->id,'method'=>'PATCH']) !!}
 					{!! Form::label('title') !!}
 					{!! Form::text('title',$article->title,["class"=>"form-control"]) !!}
+                    {!! Form::label('category') !!}
+                    {!! Form::select('cat',$cat_list,\App\Category::findOrFail($article->cat)->slug,["class"=>"form-control"]) !!}
 					{!! Form::label('content') !!}
 					{!! Form::textarea('post',$article->post,["class"=>"form-control","rows"=>"20"]) !!}
 
