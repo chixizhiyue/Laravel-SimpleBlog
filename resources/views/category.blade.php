@@ -4,7 +4,7 @@
 @include('header')
 
 <div id="main">
-    <h1>Just a Blog.</h1>
+    <h1><a class="site-title" href="/">Just a Blog.</a></h1>
     @include('nav')
 
     <table class="table table-striped">
